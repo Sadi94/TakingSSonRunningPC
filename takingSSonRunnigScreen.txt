@@ -1,0 +1,29 @@
+import os
+import time
+from datetime import datetime
+from PIL import ImageGrab
+
+# Set the path to the folder where you want to save the screenshots
+save_folder = "D:/Screenshot"
+
+
+while True:
+    try:
+        # Get the current timestamp
+        timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+       
+        # Capture the screenshot
+        screenshot = ImageGrab.grab()
+       
+        # Save the screenshot with the timestamp
+        screenshot_path = os.path.join(save_folder, f"screenshot_{timestamp}.png")
+        screenshot.save(screenshot_path)
+       
+        print(f"Screenshot saved: {screenshot_path}")
+       
+        # Wait for an hour (3600 seconds)
+        time.sleep(3600)
+   
+    except KeyboardInterrupt:
+        print("Screenshot process stopped by user.")
+        break
